@@ -7,7 +7,7 @@ const App = () => {
   const [turn, setTurn] = useState(true); // state which is create for change the turn if there is "X" after this value will change automatically to "O" which is true
 
   const check = () => {
-    const winner = [
+    const winner = [ // Array matches the same value Diagonally or X-axes or y-axes value 
       [0, 1, 2],
       [3, 4, 5],
       [6, 7, 8],
@@ -20,11 +20,11 @@ const App = () => {
     for (let logic of winner) {
       const [a, b, c] = logic;
       if (board[a] !== null && board[a] === board[b] && board[a] === board[c]) {
-        return board[a];
+        return board[a]; // logic Equals or not Equals 
       }
     }
     if (board.every(square => square !== null)) {
-      return 'Draw!!';
+      return 'Draw!!';  // if don't get Equals Value then it will return Draw
     }
     return false;
   };
@@ -35,7 +35,7 @@ const App = () => {
       return;
     }
     if (check(turn)) {
-      return
+      return // Don't allow further moves if the game is already won or a draw
     }
 
     const copyState = [...board]; //  [...board] this is the spread operator for shallow copy objects or arrays.
@@ -45,7 +45,7 @@ const App = () => {
   };
 
   const handleReset = () => {
-    setBoard(Array(9).fill(null));
+    setBoard(Array(9).fill(null)); // Reset the Array and empty thy boxes and play again the game
   };
   return (
     <View style={styles.container}>
